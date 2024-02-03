@@ -91,7 +91,7 @@ char	*get_next_line(int fd)
 	char		*tmp_copy;
 
 	j = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE || fd > MAX_FD)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > MAX_FD)
 		return (NULL);
 	if (tmp[fd] == NULL)
 	{
