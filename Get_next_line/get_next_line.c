@@ -55,7 +55,7 @@ char	*ft_strdup(char *s)
 	return (p);
 }
 
-static char	*setup(int fd, char *str, int i)
+static char	*setup(int fd, char *str, ssize_t i)
 {
 	char	*tab;
 	char	*temp_str;
@@ -91,7 +91,7 @@ char	*get_next_line(int fd)
 	char		*tmp_copy;
 
 	j = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > INT_MAX)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (tmp == NULL)
 		tmp = ft_strdup("");
