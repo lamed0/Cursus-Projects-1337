@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 11:59:15 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/01 15:42:25 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/03 12:44:12 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,3 +109,11 @@ char	*get_next_line(int fd)
 		free(tmp_copy);
 	return (line);
 }
+/*
+int main()
+{
+	char fd = open("get_next_line.h",'r');
+	char *str = get_next_line(fd);
+	printf("%s", str);
+	free(str);
+}*/
