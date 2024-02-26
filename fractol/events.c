@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:12 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/26 09:54:58 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:38:50 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int key_handler(int keysym, t_fractal *fractal)
 
 int mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
+    (void)x;
+    (void)y;
     if (button == Button4)
     {
         fractal->zoom *= 0.95;
@@ -63,8 +65,8 @@ int tracker(int x, int y, t_fractal *fractal)
 {  
     if (!ft_strncmp(fractal->name, "julia", 5))
     {
-        fractal->julia_x = (map(x, -2, +2, 0, width) * fractal->zoom) + fractal->shift_x;
-        fractal->julia_y = (map(y, +2, -2, 0, height) * fractal->zoom) + fractal->shift_y;
+        fractal->julia_x = (map(x, -2, +2, WIDTH) * fractal->zoom) + fractal->shift_x;
+        fractal->julia_y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
         render(fractal);
     }
     return (0);

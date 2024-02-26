@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:32 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/26 11:03:55 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:38:50 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ static void handler(int x, int y, t_fractal *fractal)
     // z.x = 0.0;
     // z.y = 0.0;
 
-    z.x = (map(x, -2, +2, 0, width) * fractal->zoom) + fractal->shift_x;
-    z.y = (map(y, +2, -2, 0, height) * fractal->zoom) + fractal->shift_y;
+    z.x = (map(x, -2, +2, WIDTH) * fractal->zoom) + fractal->shift_x;
+    z.y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
     man_or_jul(&z, &c, fractal);
     while (i < fractal->iter)
     {
         z = add(square(z), c);
         if ((z.x * z.x) + ( z.y * z.y) > fractal->escaper)
         {
-            color = map(i, BLACK, WHITE, 0, fractal->iter);
+            color = map(i, BLACK, WHITE, fractal->iter);
             my_pixel_put(x, y, &fractal->img, color);
             return ;
         }
@@ -69,10 +69,10 @@ void render(t_fractal *fractal)
     int y;
 
     y = 0;
-    while (++y < height)
+    while (++y < HEIGHT)
     {
         x = 0;
-          while (++x < width)
+          while (++x < WIDTH)
         {
             handler(x, y, fractal);
         }
