@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:53:37 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/24 13:53:39 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/26 09:58:04 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,32 @@ void	fd_putstr(char *s, int fd)
 			write(fd, &s[i++], 1);
 	}
 }
+
+double ascii_to_double(char *str) 
+{
+    double int_part;
+    int sign;
+    double fract_part;
+    double decimal_multiplier;
+	
+	int_part = 0;
+	sign = +1;
+	fract_part = 0;
+	decimal_multiplier = 1;
+	
+   while (*str == ' ' || (*str >= 9 && *str <= 13))
+		++str;
+	while (*str == '-' || *str == '+')
+		if (*str++ == '-')
+			sign = -sign;
+    while (*str != '.' && *str)
+        int_part = (int_part * 10) + (*str++ - 48);
+	if (*str == '.')
+		++str;
+    while (*str) 
+	{
+		decimal_multiplier /= 10;
+		fract_part = fract_part + (*str++ - 48) * decimal_multiplier;
+	}
+    return ((int_part + fract_part) * sign);
+    }

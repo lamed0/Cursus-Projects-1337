@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:32 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/24 13:52:38 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:03:55 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@ static void my_pixel_put(int x, int y, t_img *img, int color)
     int offset;
     offset = (y * img->line_len) + (x * (img->bpp / 8));
     *(unsigned int *)(img->pixels_ptr + offset) = color;
+}
+static void man_or_jul(t_complex *z, t_complex *c, t_fractal *fractal)
+{
+    if (!ft_strncmp(fractal->name, "julia", 5))
+    {
+        c->x = fractal->julia_x;
+        c->y = fractal->julia_y;
+    }
+    else
+    {
+        c->x = z->x;
+        c->y = z->y;
+    }
 }
 
             //z = z^2 + c
@@ -30,11 +43,12 @@ static void handler(int x, int y, t_fractal *fractal)
     int i;
     int color;
     i = 0;
-    z.x = 0.0;
-    z.y = 0.0;
+    // z.x = 0.0;
+    // z.y = 0.0;
 
-    c.x = (map(x, -2, +2, 0, width) * fractal->zoom) + fractal->shift_x;
-    c.y = (map(y, +2, -2, 0, height) * fractal->zoom) + fractal->shift_y;
+    z.x = (map(x, -2, +2, 0, width) * fractal->zoom) + fractal->shift_x;
+    z.y = (map(y, +2, -2, 0, height) * fractal->zoom) + fractal->shift_y;
+    man_or_jul(&z, &c, fractal);
     while (i < fractal->iter)
     {
         z = add(square(z), c);
@@ -54,10 +68,10 @@ void render(t_fractal *fractal)
     int x;
     int y;
 
-    y = -1;
+    y = 0;
     while (++y < height)
     {
-        x = -1;
+        x = 0;
           while (++x < width)
         {
             handler(x, y, fractal);

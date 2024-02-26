@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:53:06 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/24 13:53:11 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:17:51 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ static void	event_init(t_fractal *fractal)
 			StructureNotifyMask, 
 			x_close_handler, 
 			fractal);
+	mlx_hook(fractal->mlx_win, 
+			MotionNotify, 
+			PointerMotionMask, 
+			tracker, 
+			fractal);
 }
 
 void	init_fract(t_fractal *fractal)
@@ -63,8 +68,8 @@ void	init_fract(t_fractal *fractal)
 	if (NULL == fractal->img.img_ptr)
 	{
 		mlx_destroy_window(fractal->mlx_ptr, fractal->mlx_win);
-                mlx_destroy_display(fractal->mlx_ptr);
-                free(fractal->mlx_ptr);
+        mlx_destroy_display(fractal->mlx_ptr);
+        free(fractal->mlx_ptr);
 		error_malloc();
 	}
 	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr,

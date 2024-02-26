@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:12 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/24 13:52:23 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/26 09:54:58 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,20 @@ int x_close_handler(t_fractal *fractal)
 
 int key_handler(int keysym, t_fractal *fractal)
 {
+    printf("%d\n", keysym);
     if (keysym == XK_Escape)
         x_close_handler(fractal);
     if (keysym == XK_Left)
-        fractal->shift_x -= (0.5 * fractal->zoom);
-    else if (keysym == XK_Right)
         fractal->shift_x += (0.5 * fractal->zoom);
+    else if (keysym == XK_Right)
+        fractal->shift_x -= (0.5 * fractal->zoom);
     else if (keysym == XK_Up)
-        fractal->shift_y += (0.5* fractal->zoom);
-    else if (keysym == XK_Down)
         fractal->shift_y -= (0.5* fractal->zoom);
-    else if (keysym == XK_plus)
+    else if (keysym == XK_Down)
+        fractal->shift_y += (0.5* fractal->zoom);
+    else if (keysym == 61 || keysym == 65451)
         fractal->iter += 10;
-    else if (keysym == XK_minus)
+    else if (keysym == XK_minus || keysym == 65453)
         fractal->iter -= 10;
     
     render(fractal);
@@ -46,14 +47,25 @@ int key_handler(int keysym, t_fractal *fractal)
 
 int mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
-    if (button == Button5)
+    if (button == Button4)
     {
         fractal->zoom *= 0.95;
     }
-    else if (button == Button4)
+    else if (button == Button5)
     {
         fractal->zoom *= 1.05;
     }
     render(fractal);
+    return (0);
+}
+
+int tracker(int x, int y, t_fractal *fractal)
+{  
+    if (!ft_strncmp(fractal->name, "julia", 5))
+    {
+        fractal->julia_x = (map(x, -2, +2, 0, width) * fractal->zoom) + fractal->shift_x;
+        fractal->julia_y = (map(y, +2, -2, 0, height) * fractal->zoom) + fractal->shift_y;
+        render(fractal);
+    }
     return (0);
 }

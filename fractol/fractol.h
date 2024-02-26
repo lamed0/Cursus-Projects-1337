@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:50 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/24 13:52:54 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/26 09:56:02 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,14 @@ typedef struct s_fractol
 	double	shift_x;
 	double	shift_y;
 	double	zoom;
+	double	julia_x;
+	double	julia_y;
 }	t_fractal;
 
 /*--- strings utils ---*/
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 void    fd_putstr(char *s, int fd);
+double ascii_to_double(char *str);
 
 /*--- init ---*/
 void    init_fract(t_fractal *fractal);
@@ -107,5 +110,7 @@ int mouse_handler(int button, int x, int y, t_fractal *fractal);
 
 /*--- clean up ---*/
 int x_close_handler(t_fractal *fractal);
+int mouse_handler(int button, int x, int y, t_fractal *fractal);
+int tracker(int x, int y, t_fractal *fractal);
 #endif
 
