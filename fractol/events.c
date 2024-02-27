@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:12 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/26 12:38:50 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:47:40 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,33 @@ int tracker(int x, int y, t_fractal *fractal)
     {
         fractal->julia_x = (map(x, -2, +2, WIDTH) * fractal->zoom) + fractal->shift_x;
         fractal->julia_y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
+        render(fractal);
+    }
+    return (0);
+}
+
+int zoom_tracker(int button, int x, int y, t_fractal *fractal) 
+{
+    double zoom_factor;
+    double new_zoom;
+    double mouse_x;
+    double mouse_y;
+    
+    
+    if (button == 4 || button == 5) 
+    { // Check if the mouse wheel is scrolled up or down
+        if (button == 4)
+            zoom_factor = 0.9;
+        else
+            zoom_factor = 1.1;
+        // Adjust zoom level based on mouse position
+        new_zoom = fractal->zoom * zoom_factor;
+        mouse_x = map(x, -2, 2, WIDTH) * fractal->zoom + fractal->shift_x;
+        mouse_y = map(y, 2, -2, HEIGHT) * fractal->zoom + fractal->shift_y;
+        fractal->shift_x = mouse_x - (mouse_x - fractal->shift_x) * zoom_factor;
+        fractal->shift_y = mouse_y - (mouse_y - fractal->shift_y) * zoom_factor;
+
+        // Re-render fractal with updated zoom level
         render(fractal);
     }
     return (0);

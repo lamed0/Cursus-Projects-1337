@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:32 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/26 12:38:50 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:10:05 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ static void handler(int x, int y, t_fractal *fractal)
         z = add(square(z), c);
         if ((z.x * z.x) + ( z.y * z.y) > fractal->escaper)
         {
-            color = map(i, BLACK, WHITE, fractal->iter);
+            color = map(i, BLUE, RED, fractal->iter);
             my_pixel_put(x, y, &fractal->img, color);
             return ;
         }
         i++;
     }
-    my_pixel_put(x, y, &fractal->img, BLACK);
+    my_pixel_put(x, y, &fractal->img, ACID_GREEN);
 }
 
 void render(t_fractal *fractal)

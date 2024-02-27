@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:50 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/26 12:45:29 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:05:11 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void		render(t_fractal *fractal);
 /*--- event ---*/
 int			key_handler(int keysym, t_fractal *param);
 int			mouse_handler(int button, int x, int y, t_fractal *fractal);
-
+int zoom_tracker(int button, int x, int y, t_fractal *fractal);
 /*--- clean up ---*/
 int			x_close_handler(t_fractal *fractal);
 int			mouse_handler(int button, int x, int y, t_fractal *fractal);
