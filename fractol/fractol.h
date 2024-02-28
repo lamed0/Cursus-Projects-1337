@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:50 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/27 15:05:11 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:03:53 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # include <unistd.h>
 
 #define ERROR_MESSAGE "Please enter : \n\t\"./fractol mandelbrot\" or \n" \
-    "\t\"./fractol julia <value_1><value_2>\"\n"
+    "\t\"./fractol julia <value_1><value_2>\"\n" \
+	"\t\"./fractol burning\"\n"
 
 # define WIDTH 800
 # define HEIGHT 800
@@ -57,6 +58,7 @@
 # define BLAZING_RED 0xFF4500   // Blazing Red
 # define COSMIC_BLUE 0x2E2EFE   // Cosmic Blue
 # define ZENITH_YELLOW 0xFFF600 // Zenith Yellow
+# define ELECTRIC_BLUE 0x7DF9FF // Electric Blue
 
 typedef struct s_complex
 {
@@ -113,4 +115,7 @@ int zoom_tracker(int button, int x, int y, t_fractal *fractal);
 int			x_close_handler(t_fractal *fractal);
 int			mouse_handler(int button, int x, int y, t_fractal *fractal);
 int			tracker(int x, int y, t_fractal *fractal);
+/*--- Bonus ---*/
+void burning(t_fractal *burning);
+void        burning_set(int x, int y, t_fractal *burning);
 #endif
