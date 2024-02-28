@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:32 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/28 10:14:10 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/02/28 13:40:58 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ static void handler(int x, int y, t_fractal *fractal)
     man_or_jul(&z, &c, fractal);
     while (i < fractal->iter)
     {
-        z = add(square(z), c);
+        if (!ft_strncmp(fractal->name, "tricon", 6))
+            z = add(square_t(z), c);
+        else
+            z = add(square(z), c);
         if ((z.x * z.x) + ( z.y * z.y) > fractal->escaper)
         {  
             // if (i % 2 == 0)
