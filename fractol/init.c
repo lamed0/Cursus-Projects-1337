@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:53:06 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/26 16:46:37 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:47:23 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	error_malloc(void)
 	exit(1);
 }
 
-void	data_init(t_fractal *fractal)
+static void	data_init(t_fractal *fractal)
 {
 	fractal->escaper = 4;
 	fractal->iter = 42;

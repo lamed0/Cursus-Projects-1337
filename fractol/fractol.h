@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:50 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/28 13:36:02 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:52:15 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-#define ERROR_MESSAGE "Please enter : \n\t\"./fractol mandelbrot\" or \n" \
-    "\t\"./fractol julia <value_1><value_2>\"\n" \
-	"\t\"./fractol tricon\"\n"
+# define ERROR_MESSAGE "Please enter : \n\t./fractol mandelbrot or \n\
+        ./fractol julia <value_1><value_2> or \n\
+	./fractol tricon\"\n"
 
 # define WIDTH 800
 # define HEIGHT 800
@@ -102,8 +102,7 @@ void		init_fract(t_fractal *fractal);
 double		map(double unscaled_num, double new_min, double new_max,
 				double old_max);
 t_complex	add(t_complex z1, t_complex z2);
-t_complex	square(t_complex z);
-t_complex	square_t(t_complex z);
+t_complex	square(t_complex z, int i);
 
 /*--- render ---*/
 void		render(t_fractal *fractal);
@@ -111,7 +110,7 @@ void		render(t_fractal *fractal);
 /*--- event ---*/
 int			key_handler(int keysym, t_fractal *param);
 int			mouse_handler(int button, int x, int y, t_fractal *fractal);
-int zoom_tracker(int button, int x, int y, t_fractal *fractal);
+int			zoom_tracker(int button, int x, int y, t_fractal *fractal);
 /*--- clean up ---*/
 int			x_close_handler(t_fractal *fractal);
 int			mouse_handler(int button, int x, int y, t_fractal *fractal);

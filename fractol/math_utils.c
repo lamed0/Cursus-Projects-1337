@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:53:30 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/28 13:34:11 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:52:04 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,11 @@ t_complex	add(t_complex z1, t_complex z2)
 	return (res);
 }
 
-t_complex	square(t_complex z)
+t_complex	square(t_complex z, int i)
 {
 	t_complex	res;
 
 	res.x = (z.x * z.x) - (z.y * z.y);
-	res.y = 2 * z.x * z.y;
-	return (res);
-}
-
-t_complex	square_t(t_complex z)
-{
-	t_complex	res;
-
-	res.x = (z.x * z.x) - (z.y * z.y);
-	res.y = -2 * z.x * z.y;
+	res.y = i * z.x * z.y;
 	return (res);
 }

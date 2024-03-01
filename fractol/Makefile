@@ -13,7 +13,7 @@ $(NAME): $(MAIN) $(FUNCTIONS)
 .PHONY: clean fclean re
 
 clean:
-	@echo "Nothing to clean"
+	@echo "ALL GOOD"
 
 fclean: clean
 	rm -f $(NAME)
