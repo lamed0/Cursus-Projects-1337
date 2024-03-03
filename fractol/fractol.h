@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:50 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/03/01 09:52:15 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/03/03 10:59:55 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define ERROR_MESSAGE "Please enter : \n\t./fractol mandelbrot or \n\
+# define ERROR_MESSAGE_1 "Invalid inputs !"
+# define ERROR_MESSAGE_2 "Please enter : \n\t./fractol mandelbrot or \n\
         ./fractol julia <value_1><value_2> or \n\
 	./fractol tricon\"\n"
 
@@ -93,7 +94,9 @@ typedef struct s_fractol
 /*--- strings utils ---*/
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		fd_putstr(char *s, int fd);
-double		ascii_to_double(char *str);
+int			check_values(char *str, int dot_count, int sign_count,
+				int numeric_flag);
+void		exitwitherror(int x);
 
 /*--- init ---*/
 void		init_fract(t_fractal *fractal);
@@ -103,6 +106,7 @@ double		map(double unscaled_num, double new_min, double new_max,
 				double old_max);
 t_complex	add(t_complex z1, t_complex z2);
 t_complex	square(t_complex z, int i);
+double		ascii_to_double(char *str);
 
 /*--- render ---*/
 void		render(t_fractal *fractal);

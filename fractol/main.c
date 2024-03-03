@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:53:19 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/29 16:15:36 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/03/03 11:00:00 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,19 @@ int	main(int ac, char **av)
 		fractal.name = av[1];
 		if (!ft_strncmp(av[1], "julia", 5))
 		{
-			fractal.julia_x = ascii_to_double(av[2]);
-			fractal.julia_y = ascii_to_double(av[3]);
+			if (check_values(av[2], 0, 0, 0) == 1
+				|| check_values(av[3], 0, 0, 0) == 1)
+				exitwitherror(1);
+			else
+			{
+				fractal.julia_x = ascii_to_double(av[2]);
+				fractal.julia_y = ascii_to_double(av[3]);
+			}
 		}
 		init_fract(&fractal);
 		render(&fractal);
 		mlx_loop(fractal.mlx_ptr);
 	}
 	else
-	{
-		fd_putstr(ERROR_MESSAGE, STDERR_FILENO);
-		exit(1);
-	}
+		exitwitherror(0);
 }
