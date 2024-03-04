@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:52:12 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/02/29 16:04:45 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/03/03 14:44:58 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,15 @@ int	tracker(int x, int y, t_fractal *fractal)
 int	zoom_tracker(int button, int x, int y, t_fractal *fractal)
 {
 	double	zoom_factor;
-	double	new_zoom;
 	double	mouse_x;
 	double	mouse_y;
-
+ 
 	if (button == 4 || button == 5)
 	{
 		if (button == 4)
 			zoom_factor = 0.9;
 		else
 			zoom_factor = 1.1;
-		new_zoom = fractal->zoom * zoom_factor;
 		mouse_x = map(x, -2, 2, WIDTH) * fractal->zoom + fractal->shift_x;
 		mouse_y = map(y, 2, -2, HEIGHT) * fractal->zoom + fractal->shift_y;
 		fractal->shift_x = mouse_x - (mouse_x - fractal->shift_x) * zoom_factor;

@@ -6,7 +6,7 @@
 /*   By: mlamrani <mlamrani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:53:30 by mlamrani          #+#    #+#             */
-/*   Updated: 2024/03/03 10:59:28 by mlamrani         ###   ########.fr       */
+/*   Updated: 2024/03/03 12:22:58 by mlamrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ double	map(double unscaled_num, double new_min, double new_max, double old_max)
 {
 	double	old_min;
 
-	old_min = -5.5;
+	old_min = 0;
 	return ((new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min)
 		+ new_min);
 }
