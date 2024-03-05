@@ -76,7 +76,7 @@ int	zoom_tracker(int button, int x, int y, t_fractal *fractal)
 	double	zoom_factor;
 	double	mouse_x;
 	double	mouse_y;
- 
+
 	if (button == 4 || button == 5)
 	{
 		if (button == 4)

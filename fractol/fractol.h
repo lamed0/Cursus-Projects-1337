@@ -100,7 +100,6 @@ void		exitwitherror(int x);
 
 /*--- init ---*/
 void		init_fract(t_fractal *fractal);
-size_t	ft_strlen(const char *c);
 
 /*--- math utils ---*/
 double		map(double unscaled_num, double new_min, double new_max,
